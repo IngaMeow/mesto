@@ -26,5 +26,4 @@
 
 **Ссылка на сайт**
 
-Посмотреть проект можно по ссылке:
-https://ingameow.page/index.html
+Посмотреть проект можно по ссылке: https://ingameow.github.io/mesto/ 
