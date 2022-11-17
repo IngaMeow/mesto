@@ -1,0 +1,29 @@
+.elements__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0;
+  padding: 0;
+  row-gap: 20px;
+  column-gap: 17px;
+}
+
+@media screen and (max-width: 890px) {
+  .elements__list {
+    max-width: 590px;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 auto;
+  }
+}
+
+
+@media screen and (max-width: 650px) {
+  .elements__list {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+    align-self: center;
+    margin: 0 auto;
+    justify-items: center;
+  }
+}
+
+

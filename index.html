@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mesto.Russia</title>
+  <link rel="stylesheet" href="./pages/index.css">
+</head>
+
+<body class="page">
+
+  <header class="header">
+    <img src="./image/Vector.png" class="header__logo" alt="Логотип место. Россия">
+  </header>
+
+  <main>
+    <section class="profile">
+      <img src="./image/kusto.png" class="profile__avatar" alt="аватар фото Жак-Ив Кусто">
+      <div class="profile__info">
+        <div class="profile__set-button">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button type="button" class="profile__edit-button"></button>
+        </div>
+        <p class="profile__description">Исследователь океана</p>
+      </div>
+      <button type="button" class="profile__add-button"></button>
+    </section>
+
+    <section class="elements">
+      <ul class="elements__list">
+
+        <li class="element">
+          <img src="./image/kirill-pershin-1088404-unsplash.png" class="element__image" alt="Фото Сентинского храма в Карачаево-Черкесии">
+          <div class="element__info">
+            <h2 class="element__name">Карачевск</h2>
+            <button class="element__like"></button>
+          </div>
+        </li>
+
+        <li class="element">
+          <img src="./image/kirill-pershin-1088404-unsplash.png" class="element__image" alt="Фото Сентинского храма в Карачаево-Черкесии">
+          <div class="element__info">
+            <h2 class="element__name">Карачевск</h2>
+            <button class="element__like"></button>
+          </div>
+        </li>
+
+        <li class="element">
+          <img src="./image/kirill-pershin-1088404-unsplash.png" class="element__image" alt="Фото Сентинского храма в Карачаево-Черкесии">
+          <div class="element__info">
+            <h2 class="element__name">Карачевск</h2>
+            <button class="element__like"></button>
+          </div>
+        </li>
+
+        <li class="element">
+          <img src="./image/kirill-pershin-1088404-unsplash.png" class="element__image" alt="Фото Сентинского храма в Карачаево-Черкесии">
+          <div class="element__info">
+            <h2 class="element__name">Карачевск</h2>
+            <button class="element__like"></button>
+          </div>
+        </li>
+
+        <li class="element">
+          <img src="./image/kirill-pershin-1088404-unsplash.png" class="element__image" alt="Фото Сентинского храма в Карачаево-Черкесии">
+          <div class="element__info">
+            <h2 class="element__name">Карачевск</h2>
+            <button class="element__like"></button>
+          </div>
+        </li>
+
+        <li class="element">
+          <img src="./image/kirill-pershin-1088404-unsplash.png" class="element__image" alt="Фото Сентинского храма в Карачаево-Черкесии">
+          <div class="element__info">
+            <h2 class="element__name">Карачевск</h2>
+            <button class="element__like"></button>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">© 2020 Mesto Russia</p>
+  </footer>
+  
+
+    <!-- Попап -->
+  <section class="popup popup_is-opened">
+    <div class="popup__container">
+      <button class="popup__close-button"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__form">
+        <input type="text" placeholder="Имя" value="" class="popup__text popup__text_name">
+        <input type="text" placeholder="О себе" value="" class="popup__text popup__text_description">
+        <button type="submit" class="popup__submit-button">Сохранить</button>
+      </form>
+    </div>
+  </section>
+  <script src="./scripts/index.js"></script>
+</body>
+</html>
