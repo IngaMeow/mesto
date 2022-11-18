@@ -1,6 +1,7 @@
 .profile {
-  position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  text-align: center;
   color: #fff;
   max-width: 880px;
   margin: 0 auto;
@@ -14,6 +15,7 @@
 
 @media screen and (max-width: 650px) {
   .profile {
+    display: flex;
     flex-direction: column;
     max-width: 282px;
   }
