@@ -4,8 +4,8 @@ const popupCloseButtonElement = popupElement.querySelector ('.popup__close-butto
 
 
 let formElement = popupElement.querySelector('.popup__form');
-let nameInput = popupElement.querySelector('.popup__form-input_name');
-let jobInput = popupElement.querySelector('.popup__form-input_description');
+let nameInput = popupElement.querySelector('.popup__form_input_name');
+let jobInput = popupElement.querySelector('.popup__form_input_description');
 let profileNameElement = document.querySelector('.profile__name');
 let profileAboutElement = document.querySelector('.profile__description');
 
@@ -19,9 +19,6 @@ const closePopup = function() {
   popupElement.classList.remove('popup_is-opened');
 }
 
-popupOpenButtonElement.addEventListener('click', openPopup); 
-popupCloseButtonElement.addEventListener('click', closePopup); 
-
 function formSubmitHandler (evt) {
   evt.preventDefault();
   
@@ -30,4 +27,6 @@ function formSubmitHandler (evt) {
   closePopup();
 }
 
+popupCloseButtonElement.addEventListener('click', closePopup); 
+popupOpenButtonElement.addEventListener('click', openPopup); 
 formElement.addEventListener('submit', formSubmitHandler);

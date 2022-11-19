@@ -1,7 +1,7 @@
 .elements {
   width: 100%;
   max-width: 880px;
-  margin: 37px auto 79px;
+  margin: 37px auto 70px;
 }
 
 @media screen and (max-width: 890px) {

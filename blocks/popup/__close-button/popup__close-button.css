@@ -11,11 +11,11 @@
   top: -40px;
   right: -40px;
   display: flex;
-  transition: 0.5s;
+  transition: .5s;
 }
 
 .popup__close-button:hover {
-  opacity: 0.5;
+  opacity: .6;
 }
 
 @media screen and (max-width: 890px) {

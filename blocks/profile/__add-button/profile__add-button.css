@@ -5,14 +5,15 @@
   background-image: url(../../../image/mobail-add-button.svg);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 250%;
   width: 150px;
   height: 50px;
   border: #fff 2px solid;
+  border-radius: 2px;
   align-self: center;
   box-sizing: border-box;
   transition: .5s;
   cursor: pointer;
-  border-radius: 2px;
 }
 
 .profile__add-button:hover {
@@ -23,5 +24,6 @@
   .profile__add-button {
     width: 282px;
     margin-top: 36px;
+    background-size: 100%;
   }
 }

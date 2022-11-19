@@ -1,6 +1,6 @@
 .profile {
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 150px auto 150px;
   text-align: center;
   color: #fff;
   max-width: 880px;
