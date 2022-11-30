@@ -1,0 +1,21 @@
+.element__delete {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  background-image: url(../../../image/delete-button.svg);
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 18px;
+  height: 19px;
+  color: #fff;
+  transition: .5s;
+}
+
+.element__delete:hover {
+  opacity: .6;
+  cursor: pointer;
+}

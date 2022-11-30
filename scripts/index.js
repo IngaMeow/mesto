@@ -1,24 +1,45 @@
 const popupElement = document.querySelector ('.popup');
-const popupOpenButtonElement = document.querySelector ('.profile__edit-button');
 const popupCloseButtonElement = popupElement.querySelector ('.popup__close-button');
 
 
-let formElement = popupElement.querySelector('.popup__form');
-let nameInput = popupElement.querySelector('.form__input_type_name');
-let jobInput = popupElement.querySelector('.form__input_type_description');
-let profileNameElement = document.querySelector('.profile__name');
-let profileAboutElement = document.querySelector('.profile__description');
+const formElement = popupElement.querySelector('.popup__form');
+const nameInput = popupElement.querySelector('.form__input_type_name');
+const jobInput = popupElement.querySelector('.form__input_type_description');
 
+const profileNameElement = document.querySelector('.profile__name');
+const profileAboutElement = document.querySelector('.profile__description');
+
+const popupCloseProfile = document.querySelector('.popup__close-edit');
+const popupCloseElement = document.querySelector('.popup__close-add');
+
+const popupEditFormProfile = document.querySelector ('.popup__form-edit');
+const popupAddFormElement = document.querySelector ('.popup__form-add');
+
+const popupOpenAdd = document.querySelector('.profile__add-button');
+const popupOpenEdit = document.querySelector ('.profile__edit-button');
+
+const popupElementEdit = document.querySelector('.popup_type_add');
+
+
+
+//Открытите попапов
 const openPopup = function() {
   popupElement.classList.add('popup_is-opened');
-  nameInput.value = profileNameElement.textContent;
-  jobInput.value = profileAboutElement.textContent;
 }
 
+//Закрытие попапов
 const closePopup = function() {
   popupElement.classList.remove('popup_is-opened');
 }
 
+//Информация в форме редактирования
+const openPopupEdit = function () {
+  openPopup(popupElementEdit);
+  nameInput.value = profileNameElement.textContent;
+  jobInput.value = profileAboutElement.textContent;
+}
+
+// Сохранение данных
 function formSubmitHandler (evt) {
   evt.preventDefault();
   
@@ -27,6 +48,7 @@ function formSubmitHandler (evt) {
   closePopup();
 }
 
+popupOpenAdd.addEventListener('click', () => openPopup(popupAddFormElement));
+popupOpenEdit.addEventListener('click', openPopupEdit); 
 popupCloseButtonElement.addEventListener('click', closePopup); 
-popupOpenButtonElement.addEventListener('click', openPopup); 
 formElement.addEventListener('submit', formSubmitHandler);

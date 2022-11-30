@@ -27,57 +27,7 @@
     </section>
 
     <section class="elements">
-      <ul class="elements__list">
-
-        <li class="element">
-          <img src="./image/Elbrus.png" class="element__image" alt="Фото горы Эльбрус на рассвете">
-          <div class="element__info">
-            <h2 class="element__name">Эльбрус</h2>
-            <button type="button" class="element__like" aria-label="Нравится"></button>
-          </div>
-        </li>
-
-        <li class="element">
-          <img src="./image/kareliya-rossiya.png" class="element__image" alt="Фото деревянной лодки на берегу реки в Карелии">
-          <div class="element__info">
-            <h2 class="element__name">Карелия</h2>
-            <button type="button" class="element__like" aria-label="Нравится"></button>
-          </div>
-        </li>
-
-        <li class="element">
-          <img src="./image/bajkal.png" class="element__image" alt="Дерево у обрыво возле озера">
-          <div class="element__info">
-            <h2 class="element__name">Байкал</h2>
-            <button type="button" class="element__like" aria-label="Нравится"></button>
-          </div>
-        </li>
-
-        <li class="element">
-          <img src="./image/zimnii-les.png" class="element__image" alt="Верхушки ели в снегу">
-          <div class="element__info">
-            <h2 class="element__name">Зимний лес</h2>
-            <button type="button" class="element__like" aria-label="Нравится"></button>
-          </div>
-        </li>
-
-        <li class="element">
-          <img src="./image/1468782.png" class="element__image" alt="Невский проспект в Санкт-Петербурге">
-          <div class="element__info">
-            <h2 class="element__name">Невский проспект</h2>
-            <button type="button" class="element__like" aria-label="Нравится"></button>
-          </div>
-        </li>
-
-        <li class="element">
-          <img src="./image/altai.png" class="element__image" alt="Цветы в горах">
-          <div class="element__info">
-            <h2 class="element__name">Алтай</h2>
-            <button type="button" class="element__like" aria-label="Нравится"></button>
-          </div>
-        </li>
-
-      </ul>
+      <ul class="elements__list"></ul>
     </section>
   </main>
   <footer class="footer">
@@ -86,17 +36,43 @@
   
 
     <!-- Попап -->
-  <section class="popup">
+  <section class="popup popup_type_edit">
     <div class="popup__container">
-      <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
+      <button type="button" class="popup__close-button popup__close-edit" aria-label="Закрыть"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="form popup__form" name="form">
+      <form class="form popup__form popup__form-edit" name="edit-form">
         <input type="text" name="name" placeholder="Имя" value="" class="form__input form__input_type_name">
         <input type="text" name="about" placeholder="О себе" value="" class="form__input form__input_type_description">
         <button type="submit" class="popup__submit-button" aria-label="Сохранить">Сохранить</button>
       </form>
     </div>
   </section>
+
+  <section class="popup popup_type_add">
+    <div class="popup__container">
+      <button type="button" class="popup__close-button popup__close-add" aria-label="Закрыть"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="form popup__form popup__form-add" name="add-form">
+        <input type="text" name="title" placeholder="Название" value="" class="form__input form__input_type_title">
+        <input type="url" name="link" placeholder="Ссылка на картинку" value="" class="form__input form__input_type_link">
+        <button type="submit" class="popup__submit-button" aria-label="Сохранить">Сохранить</button>
+      </form>
+    </div>
+  </section>
+
+
+  <template id="element-template">
+    <li class="element">
+      <img src="#" class="element__image" alt="">
+      <div class="element__info">
+        <h2 class="element__name"></h2>
+        <button type="button" class="element__like" aria-label="Нравится"></button>
+      </div>
+      <button type="button" class="element__delete" aria-label="Удалить"></button>
+    </li>
+  </template>
   <script src="./scripts/index.js"></script>
+
+  
 </body>
 </html>
