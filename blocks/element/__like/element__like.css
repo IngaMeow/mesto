@@ -9,6 +9,7 @@
   color: #000;
   align-self: center;
   transition: .5s;
+  padding-right: 20px;
 }
 
 .element__like:hover {

@@ -5,6 +5,9 @@ const popupCloseButtonElement = popupElement.querySelector ('.popup__close-butto
 const formElement = popupElement.querySelector('.popup__form');
 const nameInput = popupElement.querySelector('.form__input_type_name');
 const jobInput = popupElement.querySelector('.form__input_type_description');
+const tileInput = popupElement.querySelector('.form__input_type_title');
+const linkInput = popupElement.querySelector('.form__input_type_link');
+
 
 const profileNameElement = document.querySelector('.profile__name');
 const profileAboutElement = document.querySelector('.profile__description');
@@ -21,6 +24,37 @@ const popupOpenEdit = document.querySelector ('.profile__edit-button');
 const popupElementEdit = document.querySelector('.popup_type_edit');
 const popupElementAdd = document.querySelector('.popup_type_add')
 
+const elementTemplate = document.querySelector('#element-template').content.querySelector('.element');
+const elementsList = document.querySelector('.elements__list');
+
+//Массив карточек
+
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
 
 
 //Открытите попапов
@@ -41,7 +75,7 @@ const openPopupEdit = function () {
   jobInput.value = profileAboutElement.textContent;
 };
 
-// Сохранение данных
+// Сохранение данных профиля
 function formSubmitHandler (evt) {
   evt.preventDefault();
   
@@ -59,8 +93,34 @@ popupCloseElement.addEventListener('click', function() {
   closePopup(popupElementAdd);
 });
 
+//Лайки
+
+
+//Добавление карточки
+function generateCard (item) {
+  const newCard = elementTemplate.cloneNode(true);
+  const cardTitle = newCard.querySelector('.element__name');
+  const cardImage = newCard.querySelector('.element__image');
+  
+  cardTitle.textContent = item.name;
+  cardImage.src = item.link;
+  cardImage.alt = item.name;
+
+  return newCard;
+};
+
+
+//Обработчик событий
+function renderCard (item) {
+  elementsList.prepend(generateCard(item));
+};
+
+
+
+//Добавление карточек
+initialCards.forEach((item) => elementsList.append(generateCard(item)));
+
+
 popupOpenAdd.addEventListener('click', () => openPopup(popupElementAdd));
-
-
 popupOpenEdit.addEventListener('click', openPopupEdit); 
 formElement.addEventListener('submit', formSubmitHandler);
