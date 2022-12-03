@@ -14,6 +14,7 @@ const profileAboutElement = document.querySelector('.profile__description');
 
 const popupCloseProfile = document.querySelector('.popup__close-edit');
 const popupCloseElement = document.querySelector('.popup__close-add');
+const popupCloseImage = document.querySelector('.popup__close-image');
 
 const popupEditFormProfile = document.querySelector ('.popup__form-edit');
 const popupAddFormElement = document.querySelector ('.popup__form-add');
@@ -22,7 +23,11 @@ const popupOpenAdd = document.querySelector('.profile__add-button');
 const popupOpenEdit = document.querySelector ('.profile__edit-button');
 
 const popupElementEdit = document.querySelector('.popup_type_edit');
-const popupElementAdd = document.querySelector('.popup_type_add')
+const popupElementAdd = document.querySelector('.popup_type_add');
+const popupElementImage = document.querySelector('.popup_type_image');
+
+const popupOpenImage = document.querySelector('.popup__image');
+const popupOpenImageTitle = document.querySelector('.popup__image-title');
 
 const elementTemplate = document.querySelector('#element-template').content.querySelector('.element');
 const elementsList = document.querySelector('.elements__list');
@@ -92,6 +97,9 @@ popupCloseProfile.addEventListener('click', function() {
 popupCloseElement.addEventListener('click', function() {
   closePopup(popupElementAdd);
 });
+popupCloseImage.addEventListener('click', function() {
+  closePopup(popupElementImage);
+});
 
 
 //Добавление карточек из массива
@@ -105,15 +113,25 @@ function generateCard (item) {
   cardImage.alt = item.name;
 
 // Лайки и удаление карточек
-  newCard.querySelector('.element__like').addEventListener ('click', function (e){
+  newCard.querySelector('.element__like').addEventListener('click', function (e){
     e.target.classList.toggle('element__like_active');
   });
 
-  newCard.querySelector('.element__delete').addEventListener ('click', function (e){
+  newCard.querySelector('.element__delete').addEventListener('click', function (e){
     e.target.closest('.element').remove();
   });
 
+  newCard.querySelector('.element__image').addEventListener('click', function() {
+    openPopup(popupElementImage);
+
+    popupOpenImage.src = item.link;
+    popupOpenImageTitle.textContent = item.name;
+    popupOpenImage.alt = item.name;
+
+  });
+
   return newCard;
+  
 };
 
 
