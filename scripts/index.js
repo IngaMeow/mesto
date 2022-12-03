@@ -93,10 +93,8 @@ popupCloseElement.addEventListener('click', function() {
   closePopup(popupElementAdd);
 });
 
-//Лайки
 
-
-//Добавление карточки
+//Добавление карточек из массива
 function generateCard (item) {
   const newCard = elementTemplate.cloneNode(true);
   const cardTitle = newCard.querySelector('.element__name');
@@ -106,8 +104,18 @@ function generateCard (item) {
   cardImage.src = item.link;
   cardImage.alt = item.name;
 
+// Лайки и удаление карточек
+  newCard.querySelector('.element__like').addEventListener ('click', function (e){
+    e.target.classList.toggle('element__like_active');
+  });
+
+  newCard.querySelector('.element__delete').addEventListener ('click', function (e){
+    e.target.closest('.element').remove();
+  });
+
   return newCard;
 };
+
 
 
 //Обработчик событий
@@ -116,10 +124,10 @@ function renderCard (item) {
 };
 
 
-
 //Добавление карточек
 initialCards.forEach((item) => elementsList.append(generateCard(item)));
 
+//Слушатели
 
 popupOpenAdd.addEventListener('click', () => openPopup(popupElementAdd));
 popupOpenEdit.addEventListener('click', openPopupEdit); 
