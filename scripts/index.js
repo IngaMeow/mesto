@@ -17,7 +17,6 @@ const popupCloseElement = document.querySelector('.popup__close-add');
 const popupCloseImage = document.querySelector('.popup__close-image');
 
 const popupEditFormProfile = document.querySelector ('.popup__form-edit');
-const popupAddFormElement = document.querySelector ('.popup__form-add');
 
 const popupOpenAdd = document.querySelector('.profile__add-button');
 const popupOpenEdit = document.querySelector ('.profile__edit-button');
@@ -135,15 +134,27 @@ function generateCard (item) {
 };
 
 
+//Добавление карточек
+const popupAddFormElement = document.querySelector ('.popup__form-add');
+
+const handleSubmitAddElement = (e) => {
+  e.preventDefault();
+  renderCard({name: tileInput.value, link: linkInput.value});
+  tileInput.value = '';
+  linkInput.value = '';
+};
 
 //Обработчик событий
-function renderCard (item) {
+const renderCard = (item) => {
   elementsList.prepend(generateCard(item));
 };
 
+initialCards.forEach((item) => {
+  renderCard(item);
+});
 
-//Добавление карточек
-initialCards.forEach((item) => elementsList.append(generateCard(item)));
+
+popupAddFormElement.addEventListener('submit', handleSubmitAddElement);
 
 //Слушатели
 
