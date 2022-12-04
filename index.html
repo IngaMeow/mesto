@@ -47,7 +47,7 @@
   
 
     <!-- Попап -->
-  <section class="popup popup_type_edit">
+  <div class="popup popup_type_edit">
     <div class="popup__container">
       <button type="button" class="popup__close-button popup__close-edit" aria-label="Закрыть"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
@@ -57,9 +57,9 @@
         <button type="submit" class="popup__submit-button" aria-label="Сохранить">Сохранить</button>
       </form>
     </div>
-  </section>
+  </div>
 
-  <section class="popup popup_type_add">
+  <div class="popup popup_type_add">
     <div class="popup__container">
       <button type="button" class="popup__close-button popup__close-add" aria-label="Закрыть"></button>
       <h2 class="popup__title">Новое место</h2>
@@ -69,18 +69,20 @@
         <button type="submit" class="popup__submit-button" aria-label="Сохранить">Сохранить</button>
       </form>
     </div>
-  </section>
+  </div>
 
   <section>
 
   </section>
-    <div class="popup popup_open-image popup_type_image">
-      <div class="popup__image-container">
-        <button type="button" class="popup__close-button popup__close-image" aria-label="Закрыть"></button>
-        <img class = "popup__image" src="#" alt="">
-        <h2 class = "popup__image-title"></h2>
-      </div>
+  <div class="popup popup_open-image popup_type_image">
+    <div class="popup__image-container">
+      <button type="button" class="popup__close-button popup__close-image" aria-label="Закрыть"></button>
+      <img class = "popup__image" src="#" alt="">
+      <h2 class = "popup__image-title"></h2>
     </div>
+  </div>
+
+  <script src="./scripts/cards.js"></script>
   <script src="./scripts/index.js"></script>
   
 </body>
