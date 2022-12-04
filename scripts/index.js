@@ -5,8 +5,10 @@ const popupCloseButtonElement = popupElement.querySelector ('.popup__close-butto
 const formElement = popupElement.querySelector('.popup__form');
 const nameInput = popupElement.querySelector('.form__input_type_name');
 const jobInput = popupElement.querySelector('.form__input_type_description');
-const tileInput = popupElement.querySelector('.form__input_type_title');
-const linkInput = popupElement.querySelector('.form__input_type_link');
+
+const popupAddFormElement = document.querySelector ('.popup__form-add');
+const titleInput = popupAddFormElement.querySelector('.form__input_type_title');
+const linkInput = popupAddFormElement.querySelector('.form__input_type_link');
 
 
 const profileNameElement = document.querySelector('.profile__name');
@@ -135,14 +137,17 @@ function generateCard (item) {
 
 
 //Добавление карточек
-const popupAddFormElement = document.querySelector ('.popup__form-add');
 
 const handleSubmitAddElement = (e) => {
   e.preventDefault();
-  renderCard({name: tileInput.value, link: linkInput.value});
-  tileInput.value = '';
+  renderCard({name: titleInput.value, link: linkInput.value});
+  titleInput.value = '';
   linkInput.value = '';
+  closePopup(popupElementAdd);
 };
+
+popupAddFormElement.addEventListener('submit', handleSubmitAddElement);
+
 
 //Обработчик событий
 const renderCard = (item) => {
@@ -154,7 +159,6 @@ initialCards.forEach((item) => {
 });
 
 
-popupAddFormElement.addEventListener('submit', handleSubmitAddElement);
 
 //Слушатели
 
