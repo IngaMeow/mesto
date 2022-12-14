@@ -33,17 +33,39 @@ const popupOpenImageTitle = document.querySelector('.popup__image-title');
 const elementTemplate = document.querySelector('#element-template').content.querySelector('.element');
 const elementsList = document.querySelector('.elements__list');
 
+const popupContainer = document.querySelector('.popup__container');
+
 
 //Открытите попапов
 function openPopup (popupElement) {
   popupElement.classList.add('popup_is-opened');
-}
+  document.addEventListener('keydown', closePopupEsc);
+};
 
 
 //Закрытие попапов
 function closePopup (popupElement) {
   popupElement.classList.remove('popup_is-opened');
+  document.removeEventListener('keydown', closePopupEsc);
+
+};
+
+//Закрытие по оверлею
+
+function closePopupOverlay(evt) {
+  if (evt.target === evt.currentTarget){
+    closePopup(evt.target);
+  };
+};
+
+//Закрытие esc 
+
+function closePopupEsc(evt) {
+  if (evt.keyCode == '27') {
+    closePopup(document.querySelector('.popup_is-opened'));
+  }
 }
+
 
 //Информация в форме редактирования
 const openPopupEdit = function () {
@@ -132,3 +154,8 @@ popupAddFormElement.addEventListener('submit', handleSubmitAddElement);
 popupOpenAdd.addEventListener('click', () => openPopup(popupElementAdd));
 popupOpenEdit.addEventListener('click', openPopupEdit); 
 formElement.addEventListener('submit', submitFormHandler);
+popupElementEdit.addEventListener('click', closePopupOverlay);
+popupElementAdd.addEventListener('click', closePopupOverlay);
+popupElementImage.addEventListener('click', closePopupOverlay);
+
+

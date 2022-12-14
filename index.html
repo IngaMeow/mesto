@@ -15,7 +15,7 @@
 
   <main>
     <section class="profile">
-      <img src="./image/profile-image.svg" class="profile__avatar" alt="аватар фото Жак-Ив Кусто">
+      <img src="./image/2022-12-14 16.29.49.jpg" class="profile__avatar" alt="аватар фото Жак-Ив Кусто">
       <div class="profile__info">
         <div class="profile__set-button">
           <button type="button" class="profile__edit-button" aria-label="Редактировать"></button>
@@ -52,8 +52,8 @@
       <button type="button" class="popup__close-button popup__close-edit" aria-label="Закрыть"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="form popup__form popup__form-edit" name="edit-form">
-        <input type="text" name="name" placeholder="Имя" value="" class="form__input form__input_type_name">
-        <input type="text" name="about" placeholder="О себе" value="" class="form__input form__input_type_description">
+        <input type="text" name="name" placeholder="Имя" value="" class="form__input form__input_type_name" minlength="2" maxlength="40" required>
+        <input type="text" name="about" placeholder="О себе" value="" class="form__input form__input_type_description" minlength="2" maxlength="200" required>
         <button type="submit" class="popup__submit-button" aria-label="Сохранить">Сохранить</button>
       </form>
     </div>
@@ -64,8 +64,8 @@
       <button type="button" class="popup__close-button popup__close-add" aria-label="Закрыть"></button>
       <h2 class="popup__title">Новое место</h2>
       <form class="form popup__form popup__form-add" name="add-form">
-        <input type="text" name="title" placeholder="Название" value="" class="form__input form__input_type_title">
-        <input type="url" name="link" placeholder="Ссылка на картинку" value="" class="form__input form__input_type_link">
+        <input type="text" name="title" placeholder="Название" value="" class="form__input form__input_type_title" minlength="2" maxlength="30" required>
+        <input type="url" name="link" placeholder="Ссылка на картинку" value="" class="form__input form__input_type_link" required>
         <button type="submit" class="popup__submit-button" aria-label="Сохранить">Сохранить</button>
       </form>
     </div>
@@ -81,7 +81,8 @@
       <h2 class = "popup__image-title"></h2>
     </div>
   </div>
-
+  
+  <script src="./scripts/validate.js"></script>
   <script src="./scripts/cards.js"></script>
   <script src="./scripts/index.js"></script>
   
