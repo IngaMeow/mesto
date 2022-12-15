@@ -1,0 +1,14 @@
+.error {
+  color: #FF0000;
+  box-sizing: border-box;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.52px;
+  max-width: 358px;
+}
+
+@media screen and (max-width: 890px) {
+  .error {
+    width: 238px;
+  }
+}
