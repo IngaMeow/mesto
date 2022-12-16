@@ -7,20 +7,20 @@ const checkInputValidity = (input, config) => {
   const error = document.querySelector(`#${input.id}-error`);
 
   if(input.validity.valid) {
-    error.textContent = ''
-    error.classList.remove(config.errorClass)
-    input.classList.remove(config.inputErrorClass)
+    error.textContent = '';
+    error.classList.remove(config.errorClass);
+    input.classList.remove(config.inputErrorClass);
 
   } else {
-    error.textContent = input.validationMessage
-    error.classList.add(config.errorClass)
-    input.classList.add(config.inputErrorClass)
+    error.textContent = input.validationMessage;
+    error.classList.add(config.errorClass);
+    input.classList.add(config.inputErrorClass);
   }
 }
 
 //Переключение кнопок взависимости от валидности
 const toggleButtonState = (inputs, button, config) => {
-  const isFormValid = inputs.every(input => input.validity.valid)
+  const isFormValid = inputs.every(input => input.validity.valid);
 
   if(isFormValid) {
     button.classList.remove(config.inactiveButtonClass);
@@ -43,7 +43,7 @@ const enableValidation = (config) => {
     const button = form.querySelector(config.submitButtonSelector);
   
     form.addEventListener('submit', (evt) => {
-      evt.preventDefault()
+      evt.preventDefault();
     });
   
     inputs.forEach(input => {

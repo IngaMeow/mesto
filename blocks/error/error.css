@@ -5,6 +5,11 @@
   font-size: 12px;
   line-height: 14.52px;
   max-width: 358px;
+  margin-top: 5px;
+  display: block;
+  visibility: hidden;
+  height: 25px;
+  margin-bottom: 10px;
 }
 
 @media screen and (max-width: 890px) {
