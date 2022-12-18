@@ -1,6 +1,3 @@
-const inputs = [...document.querySelectorAll('.form__input')];
-const forms = [...document.querySelectorAll('.popup__form')];
-
 //Проверка валидности инпутов
 
 const checkInputValidity = (input, config) => {
@@ -27,7 +24,7 @@ const toggleButtonState = (inputs, button, config) => {
     button.disabled = '';
   } else {
     button.classList.add(config.inactiveButtonClass);
-    button.disabled = 'disable';
+    button.disabled = 'disabled';
   } 
 };
 

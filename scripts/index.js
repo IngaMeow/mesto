@@ -61,7 +61,7 @@ function closePopupOverlay(evt) {
 //Закрытие esc 
 
 function closePopupEsc(evt) {
-  if (evt.keyCode == '27') {
+  if (evt.key === 'Escape') {
     closePopup(document.querySelector('.popup_is-opened'));
   }
 }
@@ -129,12 +129,13 @@ function generateCard (item) {
 
 //Добавление карточек
 
-const handleSubmitAddElement = (e) => {
-  e.preventDefault();
+const handleSubmitAddElement = (evt) => {
+  evt.preventDefault();
   renderCard({name: titleInput.value, link: linkInput.value});
+  evt.submitter.classList.add('popup__submit-button_invalid');
+  evt.submitter.disabled = true;
   closePopup(popupElementAdd);
-  titleInput.value = '';
-  linkInput.value = '';
+  evt.target.reset();
 };
 
 
