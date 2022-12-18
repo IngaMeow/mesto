@@ -1,4 +1,5 @@
 const popupElement = document.querySelector ('.popup');
+const popups = document.querySelectorAll('.popup')
 const popupCloseButtonElement = popupElement.querySelector ('.popup__close-button');
 
 
@@ -47,16 +48,20 @@ function openPopup (popupElement) {
 function closePopup (popupElement) {
   popupElement.classList.remove('popup_is-opened');
   document.removeEventListener('keydown', closePopupEsc);
-
 };
 
-//Закрытие по оверлею
+//Закрытие всех попапов
 
-function closePopupOverlay(evt) {
-  if (evt.target === evt.currentTarget){
-    closePopup(evt.target);
-  };
-};
+popups.forEach((popup) =>{
+  popup.addEventListener('mousedown', (evt) => {
+    if(evt.target.classList.contains('popup_is-opened')) {
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains('popup__close-button')) {
+      closePopup(popup);
+    }
+  })
+})
 
 //Закрытие esc 
 
@@ -65,7 +70,6 @@ function closePopupEsc(evt) {
     closePopup(document.querySelector('.popup_is-opened'));
   }
 }
-
 
 //Информация в форме редактирования
 const openPopupEdit = function () {
@@ -82,18 +86,6 @@ function submitFormHandler (evt) {
   profileAboutElement.textContent = jobInput.value;
   closePopup(popupElementEdit);
 }
-
-//Закрытие попапов
-
-popupCloseProfile.addEventListener('click', function() {
-  closePopup(popupElementEdit);
-});
-popupCloseElement.addEventListener('click', function() {
-  closePopup(popupElementAdd);
-});
-popupCloseImage.addEventListener('click', function() {
-  closePopup(popupElementImage);
-});
 
 
 //Добавление карточек из массива
@@ -155,8 +147,5 @@ popupAddFormElement.addEventListener('submit', handleSubmitAddElement);
 popupOpenAdd.addEventListener('click', () => openPopup(popupElementAdd));
 popupOpenEdit.addEventListener('click', openPopupEdit); 
 formElement.addEventListener('submit', submitFormHandler);
-popupElementEdit.addEventListener('click', closePopupOverlay);
-popupElementAdd.addEventListener('click', closePopupOverlay);
-popupElementImage.addEventListener('click', closePopupOverlay);
 
 
