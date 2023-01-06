@@ -37,6 +37,7 @@ const elementsList = document.querySelector('.elements__list');
 const popupContainer = document.querySelector('.popup__container');
 
 
+
 //Открытите попапов
 function openPopup (popupElement) {
   popupElement.classList.add('popup_is-opened');
@@ -87,37 +88,19 @@ function submitFormHandler (evt) {
   closePopup(popupElementEdit);
 }
 
+//Открытие карточки 
+function handleClickImage(name, link) {
+  popupOpenImage.src = link;
+  popupOpenImage.alt = name;
+  popupOpenImageTitle.textContent = name;
+  openPopup(popupElementImage)
+}
 
-//Добавление карточек из массива
-function generateCard (item) {
-  const newCard = elementTemplate.cloneNode(true);
-  const cardTitle = newCard.querySelector('.element__name');
-  const cardImage = newCard.querySelector('.element__image');
-  
-  cardTitle.textContent = item.name;
-  cardImage.src = item.link;
-  cardImage.alt = item.name;
-
-  // Лайки и удаление карточек
-  newCard.querySelector('.element__like').addEventListener('click', function (e){
-    e.target.classList.toggle('element__like_active');
-  });
-
-  newCard.querySelector('.element__delete').addEventListener('click', function (e){
-    e.target.closest('.element').remove();
-  });
-
-  newCard.querySelector('.element__image').addEventListener('click', function() {
-    popupOpenImage.src = item.link;
-    popupOpenImageTitle.textContent = item.name;
-    popupOpenImage.alt = item.name;
-
-    openPopup(popupElementImage);
-  });
-
-  return newCard;
-};
-
+function createCard(item) {
+  const card = new Card(item, '#element-template', handleClickImage);
+  const cardElement = card.generateCard(item);
+  return cardElement;
+}
 
 //Добавление карточек
 
@@ -130,13 +113,14 @@ const handleSubmitAddElement = (evt) => {
   evt.target.reset();
 };
 
-
-//Обработчик событий
 const renderCard = (item) => {
-  elementsList.prepend(generateCard(item));
+  elementsList.prepend(createCard(item));
 };
 
+//Обработчик событий
+
 initialCards.forEach((item) => {
+  createCard(item);
   renderCard(item);
 });
 
@@ -147,5 +131,3 @@ popupAddFormElement.addEventListener('submit', handleSubmitAddElement);
 popupOpenAdd.addEventListener('click', () => openPopup(popupElementAdd));
 popupOpenEdit.addEventListener('click', openPopupEdit); 
 formElement.addEventListener('submit', submitFormHandler);
-
-
