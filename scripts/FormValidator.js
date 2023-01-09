@@ -1,62 +1,84 @@
+export default class FormValidator {
+  constructor (config, formElement) {
+    this._formElement = formElement;
+    this._inputSelector = config.inputSelector;
+    this._submitButtonSelector = config.submitButtonSelector;
+    this._inactiveButtonClass = config.inactiveButtonClass;
+    this._inputErrorClass = config.inputErrorClass;
+    this._errorClass = config.errorClass;
+    this._inputs = [...this._formElement.querySelectorAll(this._inputSelector)];
+    this._button = this._formElement.querySelector(this._submitButtonSelector);
+  }
+
 //Проверка валидности инпутов
 
-const checkInputValidity = (input, config) => {
-  const error = document.querySelector(`#${input.id}-error`);
-
-  if(input.validity.valid) {
-    error.textContent = '';
-    error.classList.remove(config.errorClass);
-    input.classList.remove(config.inputErrorClass);
-
-  } else {
-    error.textContent = input.validationMessage;
-    error.classList.add(config.errorClass);
-    input.classList.add(config.inputErrorClass);
+ _checkInputValidity(inputElement) {
+  if (inputElement.validity.valid) {
+    this._hideInputError(inputElement);
+    } else {
+    this._showInputError(inputElement);
+    }
   }
-}
+
+  // Скрытие ошибки
+
+  _hideInputError(inputElement) {
+    const error = this._formElement.querySelector(`#${inputElement.id}-error`);
+    error.textContent = '';
+    error.classList.remove(this._errorClass);
+    inputElement.classList.remove(this._inputErrorClass);
+  }
+
+// Показ ошибки
+  _showInputError(inputElement) {
+    const error = this._formElement.querySelector(`#${inputElement.id}-error`);
+    error.textContent = inputElement.validationMessage;
+    error.classList.add(this._errorClass);
+    inputElement.classList.add(this._inputErrorClass);
+  }
+
+  _isFormValid() {
+    return this._inputs.every(inputElement => inputElement.validity.valid);
+  }
+
 
 //Переключение кнопок взависимости от валидности
-const toggleButtonState = (inputs, button, config) => {
-  const isFormValid = inputs.every(input => input.validity.valid);
 
-  if(isFormValid) {
-    button.classList.remove(config.inactiveButtonClass);
-    button.disabled = '';
+_toggleButtonState () {
+  if(this._isFormValid(this._inputs)) {
+    this._button.classList.remove(this._inactiveButtonClass);
+    this._button.disabled = '';
   } else {
-    button.classList.add(config.inactiveButtonClass);
-    button.disabled = 'disabled';
+    this._button.classList.add(this._inactiveButtonClass);
+    this._button.disabled = 'disabled';
   } 
-};
+  }
 
+  //Обработка всех полей формы
+  _setEventListeners() {
+    this._toggleButtonState(this._inputs, this._button);  
 
-
-//enableValidation
-
-const enableValidation = (config) => {
-  const forms = [...document.querySelectorAll(config.formSelector)];
-
-  forms.forEach(form => {
-    const inputs = [...form.querySelectorAll(config.inputSelector)];
-    const button = form.querySelector(config.submitButtonSelector);
-  
-    form.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-    });
-  
-    inputs.forEach(input => {
-      input.addEventListener('input', () => {
-        checkInputValidity(input, config);    
-        toggleButtonState(inputs, button, config);
+    this._inputs.forEach(inputElement => {
+      inputElement.addEventListener('input', () => {
+        this._checkInputValidity(inputElement);    
+        this._toggleButtonState();
       });
     });
-  });
-}
+  }
 
-enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.form__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__submit-button_invalid',
-  inputErrorClass: 'form__input_type_error',
-  errorClass: 'popup__error_visible'
-});
+  resetValidation () {
+    this._toggleButtonState();
+    this._inputs.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    });
+  }
+
+//Обработка форм
+  enableValidation = () => {
+    this._formElement.addEventListener ('submit', (evt) => {
+      evt.preventDefault();
+    });
+
+    this._setEventListeners();
+    }
+}

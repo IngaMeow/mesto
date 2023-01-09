@@ -1,6 +1,9 @@
+import {initialCards, config} from "./data.js";
+import Card from "./card.js";
+import FormValidator from "./FormValidator.js";
+
 const popupElement = document.querySelector ('.popup');
 const popups = document.querySelectorAll('.popup')
-const popupCloseButtonElement = popupElement.querySelector ('.popup__close-button');
 
 
 const formElement = popupElement.querySelector('.popup__form');
@@ -14,10 +17,6 @@ const linkInput = popupAddFormElement.querySelector('.form__input_type_link');
 
 const profileNameElement = document.querySelector('.profile__name');
 const profileAboutElement = document.querySelector('.profile__description');
-
-const popupCloseProfile = document.querySelector('.popup__close-edit');
-const popupCloseElement = document.querySelector('.popup__close-add');
-const popupCloseImage = document.querySelector('.popup__close-image');
 
 const popupEditFormProfile = document.querySelector ('.popup__form-edit');
 
@@ -34,7 +33,13 @@ const popupOpenImageTitle = document.querySelector('.popup__image-title');
 const elementTemplate = document.querySelector('#element-template').content.querySelector('.element');
 const elementsList = document.querySelector('.elements__list');
 
-const popupContainer = document.querySelector('.popup__container');
+
+// экземпляры класса валидации для форм
+const formValidProfile = new FormValidator(config, popupEditFormProfile);
+const formValidAddCard = new FormValidator(config, popupAddFormElement);
+
+formValidProfile.enableValidation();
+formValidAddCard.enableValidation();
 
 
 
