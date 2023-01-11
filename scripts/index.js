@@ -1,4 +1,4 @@
-import {initialCards, config} from "./data.js";
+import {initialCards, config} from "./constants.js";
 import Card from "./card.js";
 import FormValidator from "./FormValidator.js";
 
@@ -60,19 +60,17 @@ function closePopup (popupElement) {
 
 popups.forEach((popup) =>{
   popup.addEventListener('mousedown', (evt) => {
-    if(evt.target.classList.contains('popup_is-opened')) {
-      closePopup(popup);
-    }
-    if (evt.target.classList.contains('popup__close-button')) {
-      closePopup(popup);
+  if (evt.target.classList.contains('popup_is-opened') || evt.target.classList.contains('popup__close-button')) {
+    closePopup(popup);
     }
   })
 })
 
 //Закрытие esc 
 
+const esc = 'Escape'
 function closePopupEsc(evt) {
-  if (evt.key === 'Escape') {
+  if (evt.key === esc) {
     closePopup(document.querySelector('.popup_is-opened'));
   }
 }
@@ -85,7 +83,7 @@ const openPopupEdit = function () {
 };
 
 // Сохранение данных профиля
-function submitFormHandler (evt) {
+function submitFormEditHandler (evt) {
   evt.preventDefault();
   
   profileNameElement.textContent = nameInput.value;
@@ -135,4 +133,4 @@ initialCards.forEach((item) => {
 popupAddFormElement.addEventListener('submit', handleSubmitAddElement);
 popupOpenAdd.addEventListener('click', () => openPopup(popupElementAdd));
 popupOpenEdit.addEventListener('click', openPopupEdit); 
-formElement.addEventListener('submit', submitFormHandler);
+formElement.addEventListener('submit', submitFormEditHandler);
