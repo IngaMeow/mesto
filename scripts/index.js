@@ -1,5 +1,5 @@
 import {initialCards, config} from "./constants.js";
-import Card from "./card.js";
+import Card from "./Сard.js";
 import FormValidator from "./FormValidator.js";
 
 const popupElement = document.querySelector ('.popup');
@@ -32,6 +32,8 @@ const popupOpenImageTitle = document.querySelector('.popup__image-title');
 
 const elementTemplate = document.querySelector('#element-template').content.querySelector('.element');
 const elementsList = document.querySelector('.elements__list');
+
+const esc = 'Escape';
 
 
 // экземпляры класса валидации для форм
@@ -68,7 +70,6 @@ popups.forEach((popup) =>{
 
 //Закрытие esc 
 
-const esc = 'Escape'
 function closePopupEsc(evt) {
   if (evt.key === esc) {
     closePopup(document.querySelector('.popup_is-opened'));
