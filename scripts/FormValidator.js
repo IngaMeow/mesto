@@ -44,7 +44,7 @@ export default class FormValidator {
 
 //Переключение кнопок взависимости от валидности
 
-_toggleButtonState () {
+_toggleButtonState() {
   if(this._isFormValid(this._inputs)) {
     this._button.classList.remove(this._inactiveButtonClass);
     this._button.disabled = '';

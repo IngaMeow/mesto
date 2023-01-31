@@ -1,9 +1,9 @@
 export default class Card {
-  constructor(data, templateSelector, handleClickImage) {
+  constructor(data, templateSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
-    this._handleClickImage = handleClickImage;
+    this.handleCardClick = handleCardClick;
   }
 
   //Клонирование элемента
@@ -45,7 +45,7 @@ this._deleteButton.addEventListener('click', () => {
 });
 
 this._elementImage.addEventListener('click', () => {
-  this._handleClickImage(this._name, this._link);
+  this.handleCardClick(this._name, this._link);
 })
 }
 
