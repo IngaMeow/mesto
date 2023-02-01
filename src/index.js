@@ -5,37 +5,19 @@ import Section from "./Section.js";
 import PopupWithImage from './PopupWithImage.js';
 import PopupWithForm from "./PopupWithForm.js";
 import UserInfo from "./UserInfo.js";
+import './pages/index.css';
 
 const popupElement = document.querySelector ('.popup');
-const popups = document.querySelectorAll('.popup')
 
-
-const formElement = popupElement.querySelector('.popup__form');
 const nameInput = popupElement.querySelector('.form__input_type_name');
 const jobInput = popupElement.querySelector('.form__input_type_description');
 
 const popupAddFormElement = document.querySelector ('.popup__form-add');
-const titleInput = popupAddFormElement.querySelector('.form__input_type_title');
-const linkInput = popupAddFormElement.querySelector('.form__input_type_link');
-
-
-const profileNameElement = document.querySelector('.profile__name');
-const profileAboutElement = document.querySelector('.profile__description');
 
 const popupEditFormProfile = document.querySelector ('.popup__form-edit');
 
 const popupOpenAdd = document.querySelector('.profile__add-button');
 const popupOpenEdit = document.querySelector ('.profile__edit-button');
-
-const popupElementEdit = document.querySelector('.popup_type_edit');
-const popupElementAdd = document.querySelector('.popup_type_add');
-const popupElementImage = document.querySelector('.popup_type_image');
-
-const popupOpenImage = document.querySelector('.popup__image');
-const popupOpenImageTitle = document.querySelector('.popup__image-title');
-
-const elementTemplate = document.querySelector('#element-template').content.querySelector('.element');
-const elementsList = document.querySelector('.elements__list');
 
 
 // экземпляры класса валидации для форм
@@ -117,6 +99,6 @@ popupAddCard.setEventListeners();
 
 
 
-popupOpenAdd.addEventListener ('click', () => {
+popupOpenAdd.addEventListener ('click', (evt) => {
   popupAddCard.open();
 });
