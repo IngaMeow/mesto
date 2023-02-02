@@ -14,6 +14,7 @@ export default class Section {
     this._container.prepend(element);
   }
 
+
 //Отвечает за отрисовку элементов  
 
   renderItems() {

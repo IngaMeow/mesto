@@ -36,3 +36,21 @@ export const config = {
   errorClass: 'popup__error_visible'
 };
 
+//Информация о пользователе
+
+export const profileInformation = {
+  userName: '.profile__name',
+  userJob: '.profile__description'
+};
+
+//Константы
+export const popupEditFormProfile = document.forms['edit-form'];
+export const nameInput = popupEditFormProfile.querySelector('.form__input_type_name');
+export const jobInput = popupEditFormProfile.querySelector('.form__input_type_description');
+
+export const popupAddFormElement = document.forms['add-form'];
+
+
+export const popupOpenAdd = document.querySelector('.profile__add-button');
+export const popupOpenEdit = document.querySelector ('.profile__edit-button');
+

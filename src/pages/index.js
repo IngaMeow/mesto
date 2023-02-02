@@ -1,23 +1,14 @@
-import {initialCards, config} from "./constants.js";
-import Card from "./Сard.js";
-import FormValidator from "./FormValidator.js";
-import Section from "./Section.js";
-import PopupWithImage from './PopupWithImage.js';
-import PopupWithForm from "./PopupWithForm.js";
-import UserInfo from "./UserInfo.js";
-import './pages/index.css';
+import {initialCards, config, profileInformation, popupEditFormProfile, nameInput, jobInput, popupAddFormElement, popupOpenAdd, popupOpenEdit} from "../utils/constants";
+import Card from "../components/Сard";
+import FormValidator from "../components/FormValidator.js";
+import Section from "../components/Section.js";
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
+import '../pages/index.css';
 
-const popupElement = document.querySelector ('.popup');
 
-const nameInput = popupElement.querySelector('.form__input_type_name');
-const jobInput = popupElement.querySelector('.form__input_type_description');
 
-const popupAddFormElement = document.querySelector ('.popup__form-add');
-
-const popupEditFormProfile = document.querySelector ('.popup__form-edit');
-
-const popupOpenAdd = document.querySelector('.profile__add-button');
-const popupOpenEdit = document.querySelector ('.profile__edit-button');
 
 
 // экземпляры класса валидации для форм
@@ -28,12 +19,7 @@ const formValidAddCard = new FormValidator(config, popupAddFormElement);
 formValidProfile.enableValidation();
 formValidAddCard.enableValidation();
 
-//Информация о пользователе
 
-const profileInformation = {
-  userName: '.profile__name',
-  userJob: '.profile__description'
-};
 
 const userInfo = new UserInfo(profileInformation);
 
@@ -101,4 +87,5 @@ popupAddCard.setEventListeners();
 
 popupOpenAdd.addEventListener ('click', (evt) => {
   popupAddCard.open();
+  formValidAddCard.resetValidation();
 });

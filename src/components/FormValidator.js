@@ -56,7 +56,7 @@ _toggleButtonState() {
 
   //Обработка всех полей формы
   _setEventListeners() {
-    this._toggleButtonState(this._inputs, this._button);  
+    this._toggleButtonState();  
 
     this._inputs.forEach(inputElement => {
       inputElement.addEventListener('input', () => {
