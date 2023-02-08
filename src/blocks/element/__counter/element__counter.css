@@ -1,0 +1,8 @@
+.element__counter {
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15px;
+}

@@ -1,0 +1,11 @@
+.popup__user-title {
+  margin-top: 34px;
+  margin-left: 36px;
+  margin-bottom: 54px;
+}
+
+@media screen and (max-width: 890px) {
+  .popup__user-title {
+    margin-left: 20px;
+  }
+}
