@@ -36,11 +36,11 @@ module.exports = {
               importLoaders: 1
             }
           },
-          'postcss-loader'
-        ]
+          'postcss-loader']
       },
     ]
   },
+  devtool: 'eval-source-map',
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html'

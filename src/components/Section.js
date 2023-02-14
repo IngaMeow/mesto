@@ -1,25 +1,18 @@
-// Конструктор принимает параметры с объектами
-// items - массив данных, renderer - отрисовка данных, selector - сюда добавляем созданные элементы
- 
-
 export default class Section {
-  constructor({items, renderer}, selector) {
-    this._renderedItems = items;
+  constructor({renderer}, selector) {
     this._renderer = renderer;
-    this._container = document.querySelector(selector);
+    this._container = document.querySelector(selector); 
   }
 
 //Принимает DOM элемент и добавляет его в контейнер
-  addItem(element) {
+  addItem = (element) => {
     this._container.prepend(element);
   }
 
 
 //Отвечает за отрисовку элементов  
 
-  renderItems() {
-    this._renderedItems.forEach(item =>{
-      this._renderer(item);
-    });
-  }
+renderItems = (items) => {
+  items.forEach(this._renderer.bind(this)); 
+}
 }

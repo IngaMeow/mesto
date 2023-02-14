@@ -124,26 +124,26 @@
     </div>
   </div>
 
-  <div class="popup popup_edit-avatar">
+  <div class="popup popup_type_edit-avatar">
     <div class="popup__container">
       <button type="button" class="popup__close-button popup__close-add" aria-label="Закрыть"></button>
       <form class="form popup__form popup__edit-avatar" name="avatar-edit">
         <h2 class="popup__user-title">Обновить аватар</h2>
         <input
-        id="link"
-        type="link"
+        id="link-card"
+        type="url"
         name="link"
         placeholder="Ссылка на картинку" 
         value=""
-        class="form__input form__input_type_title"
+        class="form__input form__input_type_link"
         required>
-        <span id="edit-avatar-error" class="error error_active"></span>
+        <span id="link-card-error" class="error error_active"></span>
         <button type="submit" class="popup__button popup__submit-button popup__save-avatar" aria-label="Сохранить">Сохранить</button>
       </form>
     </div>
   </div>
 
-  <div class="popup popup_type_delete>
+  <div class="popup popup_type_delete">
     <div class="popup__container">
       <button type="button" class="popup__close-button popup__close-add" aria-label="Закрыть"></button>
       <form class="form popup__form popup__delete" name="delete-card">

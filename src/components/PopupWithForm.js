@@ -5,6 +5,7 @@ export default class PopupWithForm extends Popup {
     super(popupSelector);
     this._formElement = this._popupElement.querySelector('.popup__form');
     this._inputSelector = this._formElement.querySelectorAll('.form__input');
+    this._button = this._formElement.querySelectorAll('.popup__submit-button')
     this._handleFormSubmit = handleFormSubmit;
   };   
 
@@ -15,6 +16,12 @@ export default class PopupWithForm extends Popup {
       this._formValues[input.name] = input.value;});
     return this._formValues;
   };
+
+  // Ожидание загрузки на кнопке
+
+  setButtonText = (text) => {
+    this._button.textContent = text;
+  }
 
   setEventListeners () {
     super.setEventListeners();
@@ -29,5 +36,13 @@ export default class PopupWithForm extends Popup {
     super.close();
     this._formElement.reset();
   };
+
+  load(loading) {
+    if(loading) {
+      this._button.textContent = 'Сохранение...'
+    } else {
+      this._button.textContent = 'Сохранить'
+    }
+  }
 }
 

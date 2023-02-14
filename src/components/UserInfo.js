@@ -1,7 +1,8 @@
 export default class UserInfo {
-  constructor ({userName, userJob}) {
+  constructor ({userName, userJob, userAvatar}) {
     this._name = document.querySelector(userName);
     this._about = document.querySelector(userJob);
+    this._avatar = document.querySelector(userAvatar);
   };
 
   //Получаем данные пользователя
@@ -9,7 +10,8 @@ export default class UserInfo {
   getUserInfo() {
     const userData = {
       name: this._name.textContent, 
-      about: this._about.textContent
+      about: this._about.textContent,
+      userAvatar: this._avatar.src
     };
     return userData 
   };
@@ -19,5 +21,6 @@ export default class UserInfo {
   setUserInfo(userData) {
     this._name.textContent = userData.name;
     this._about.textContent = userData.about;
+    this._avatar.src = userData.avatar;
   }
 };

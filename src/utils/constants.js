@@ -40,7 +40,8 @@ export const config = {
 
 export const profileInformation = {
   userName: '.profile__name',
-  userJob: '.profile__description'
+  userJob: '.profile__description',
+  userAvatar: '.profile__avatar'
 };
 
 //Константы
