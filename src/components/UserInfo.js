@@ -9,8 +9,8 @@ export default class UserInfo {
 
   getUserInfo() {
     const userData = {
-      name: this._name.textContent, 
-      about: this._about.textContent,
+      userName: this._name.textContent, 
+      userJob: this._about.textContent,
       userAvatar: this._avatar.src
     };
     return userData 
@@ -18,9 +18,9 @@ export default class UserInfo {
 
  //Добавляем данные на страницу
  
-  setUserInfo(userData) {
-    this._name.textContent = userData.name;
-    this._about.textContent = userData.about;
-    this._avatar.src = userData.avatar;
+  setUserInfo(data) {
+    this._name.textContent = data.name;
+    this._about.textContent = data.about;
+    this._avatar.src = data.avatar;
   }
 };

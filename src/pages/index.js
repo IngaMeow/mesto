@@ -10,7 +10,7 @@ import '../pages/index.css';
 
 
 const editAvatarButton = document.querySelector('.profile__avatar-edit');
-const popupEditAvatarButton = document.querySelector('.popup__edit-avatar')
+const popupEditAvatarButton = document.querySelector('.popup__edit-avatar');
 
 //Подключение APi
 
@@ -30,7 +30,6 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(([items, userData]) => {
     userInfo.setUserInfo(userData);
     cardList.renderItems(items);
-    console.log(items)
   })
   .catch((err) => {
     console.log(err);
@@ -98,9 +97,9 @@ popupEditProfile.setEventListeners();
 
 popupOpenEdit.addEventListener('click', () => {
   popupEditProfile.open();
-  const {name, about} = userInfo.getUserInfo();
-  nameInput.value = name;
-  jobInput.value = about;
+  const data = userInfo.getUserInfo();
+  nameInput.value = data.userName;
+  jobInput.value = data.userJob;
 });
 
 //Редактирование аватара
@@ -111,6 +110,8 @@ const popupEditAvatar = new PopupWithForm('.popup_type_edit-avatar', {
     api.editAvatar(userData)
       .then((userData) => {
         userInfo.setUserInfo(userData);
+        popupEditAvatar.close();
+        console.log(userInfo.setUserInfo(userData))
     })
       .finally(() => {
         popupEditAvatar.load(false)

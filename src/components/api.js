@@ -30,12 +30,12 @@ export class Api {
     return fetch('https://mesto.nomoreparties.co/v1/cohort-59/users/me/avatar', {
       method: 'PATCH',
       headers: this._headers,
-      body: JSON.stringify ({
+      body: JSON.stringify({
         avatar: data.avatar
       })
-      .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
-      .catch(() => {console.log})
     })
+      .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+      .catch(() => {console.log})  
   }
 
   getInitialCards = () => {
@@ -44,10 +44,8 @@ export class Api {
       headers: this._headers,
     })
     .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
-    .then (res => {
-      console.log('res =>', res)
-    })
-    .catch(() => {console.log})
+    .then(res => (console.log('res =>', res), res))
+    .catch(err => console.log(err));
   }
 
   addNewCard = (data) => {

@@ -13,6 +13,6 @@ export default class Section {
 //Отвечает за отрисовку элементов  
 
 renderItems = (items) => {
-  items.forEach(this._renderer.bind(this)); 
+  items.forEach(item => this._renderer(item)); 
 }
 }
