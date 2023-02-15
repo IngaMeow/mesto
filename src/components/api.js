@@ -71,17 +71,17 @@ export class Api {
     .catch(() => {console.log})
   }
 
-  addCardLike = (id) => {
-    return fetch('https://mesto.nomoreparties.co/v1/cohortId/cards/cardId/likes' + id + '/likes', {
-      method: 'DELETE',
+  addCardLike = (cardID) => {
+    return fetch(`${this._url}/cards/likes/${cardID}`, {
+      method: 'PUT',
       headers: this._headers,
     })
     .then(res => res.ok ? res.json() : Promise.reject())    
     .catch(() => {console.log})
   }
 
-  deleteCardLike = (id) => {
-    return fetch('https://mesto.nomoreparties.co/v1/cohortId/cards/cardId/likes' + id + '/likes', {
+  deleteCardLike = (cardID) => {
+    return fetch(`${this._url}/cards/likes/${cardID}`, {
       method: 'DELETE',
       headers: this._headers,
     })

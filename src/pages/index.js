@@ -28,6 +28,7 @@ let userId;
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(([items, userData]) => {
+    userId = userData._id;
     userInfo.setUserInfo(userData);
     cardList.renderItems(items);
   })
@@ -51,15 +52,6 @@ formValidEditAvatar.enableValidation();
 const userInfo = new UserInfo(profileInformation);
 
 
-//Открытие карточки 
-
-const createCard = (data) => {
-  const card = new Card(data, '#element-template', handleOpenClickImage);
-  const cardElement = card.generateCard();
-  return cardElement;
-}
-
-
 // Отрендерить карточки из массива
 
 const cardList = new Section ({
@@ -74,7 +66,6 @@ popupWithImage.setEventListeners();
 
 
 function handleOpenClickImage (name, link) {
-
   popupWithImage.open(name,link);
 }
 
@@ -125,17 +116,70 @@ editAvatarButton.addEventListener('click', () => {
   popupEditAvatar.open();
 });
 
-//Создание карточки
+//Добавление карточки
 
 const popupAddCard = new PopupWithForm (
   '.popup_type_add', {
   handleFormSubmit: (cardData) => {
-    const newCard = createCard(cardData);
-    cardList.addItem(newCard);
-    popupAddCard.close();
+    popupAddCard.load(true);
+    api.addNewCard(cardData)
+      .then((cardData) => {
+      const newCard = createCard(cardData);
+      cardList.addItem(newCard);
+      popupAddCard.close();
+    })
+      .finally(() => {
+      popupAddCard.load(false);
+    });
   }
-  });
+});
 popupAddCard.setEventListeners();
+
+// Подтверждение удаления карточки
+
+// const popupConfirmDelete = new PopupWithConfirmation('.popup_type_delete')
+// popupConfirmDelete.setEventListeners();
+
+
+//Создание карточки 
+
+const createCard = (data) => {
+  // const handleDeleteClick = (id) => {
+
+
+  // }
+
+  const handleLikeClick = (id) => {
+    api.addCardLike(id)
+      .then((data) => {
+        card.updateLikesCounter(data)
+      });
+  };
+
+  const handleDislike = (id) => {
+    api.deleteCardLike(id)
+      .then((data) => {
+        card.updateLikesCounter(data);
+      })
+  }
+
+  const card = new Card(
+    data, 
+    '#element-template', 
+    handleOpenClickImage,
+    userId,
+    // handleDeleteClick,
+    handleLikeClick,
+    handleDislike
+    );
+  const cardElement = card.generateCard();
+
+  return cardElement;
+}
+
+
+
+
 
 
 
