@@ -1,4 +1,4 @@
-import {initialCards, config, profileInformation, popupEditFormProfile, nameInput, jobInput, popupAddFormElement, popupOpenAdd, popupOpenEdit} from "../utils/constants";
+import {config, profileInformation, popupEditFormProfile, nameInput, jobInput, popupAddFormElement, popupOpenAdd, popupOpenEdit, editAvatarButton, popupEditAvatarButton} from "../utils/constants";
 import Card from "../components/Сard";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
@@ -6,11 +6,9 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import { Api } from "../components/api";
+import { PopupWithConfirmation } from "../components/PopupWithConfirmation";
 import '../pages/index.css';
 
-
-const editAvatarButton = document.querySelector('.profile__avatar-edit');
-const popupEditAvatarButton = document.querySelector('.popup__edit-avatar');
 
 //Подключение APi
 
@@ -112,9 +110,59 @@ const popupEditAvatar = new PopupWithForm('.popup_type_edit-avatar', {
 popupEditAvatar.setEventListeners();
 
 editAvatarButton.addEventListener('click', () => {
-  //formValidEditAvatar.toggleButtonState();
   popupEditAvatar.open();
 });
+
+
+
+// Подтверждение удаления карточки
+
+const popupConfirmDelete = new PopupWithConfirmation('.popup_type_delete')
+popupConfirmDelete.setEventListeners();
+
+
+//Создание карточки 
+
+const createCard = (data) => {
+
+  const handleLikeClick = (id) => {
+    api.addCardLike(id)
+      .then((data) => {
+        card.updateLikesCounter(data)
+      });
+  };
+
+  const handleDislike = (id) => {
+    api.deleteCardLike(id)
+      .then((data) => {
+        card.updateLikesCounter(data);
+      })
+  }
+
+  const handleDeleteClick = (id) => {
+    popupConfirmDelete.open();
+    popupConfirmDelete.setCallback(() => {
+    api.deleteCard(id)
+        .then(() => {
+          card.handleDelete();
+          popupConfirmDelete.close();
+        })
+    })
+  }
+
+  const card = new Card(
+    data, 
+    '#element-template', 
+    handleOpenClickImage,
+    userId,
+    handleLikeClick,
+    handleDislike,
+    handleDeleteClick
+    );
+  const cardElement = card.generateCard();
+
+  return cardElement;
+}
 
 //Добавление карточки
 
@@ -134,52 +182,6 @@ const popupAddCard = new PopupWithForm (
   }
 });
 popupAddCard.setEventListeners();
-
-// Подтверждение удаления карточки
-
-// const popupConfirmDelete = new PopupWithConfirmation('.popup_type_delete')
-// popupConfirmDelete.setEventListeners();
-
-
-//Создание карточки 
-
-const createCard = (data) => {
-  // const handleDeleteClick = (id) => {
-
-
-  // }
-
-  const handleLikeClick = (id) => {
-    api.addCardLike(id)
-      .then((data) => {
-        card.updateLikesCounter(data)
-      });
-  };
-
-  const handleDislike = (id) => {
-    api.deleteCardLike(id)
-      .then((data) => {
-        card.updateLikesCounter(data);
-      })
-  }
-
-  const card = new Card(
-    data, 
-    '#element-template', 
-    handleOpenClickImage,
-    userId,
-    // handleDeleteClick,
-    handleLikeClick,
-    handleDislike
-    );
-  const cardElement = card.generateCard();
-
-  return cardElement;
-}
-
-
-
-
 
 
 

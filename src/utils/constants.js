@@ -55,3 +55,6 @@ export const popupAddFormElement = document.forms['add-form'];
 export const popupOpenAdd = document.querySelector('.profile__add-button');
 export const popupOpenEdit = document.querySelector ('.profile__edit-button');
 
+export const editAvatarButton = document.querySelector('.profile__avatar-edit');
+export const popupEditAvatarButton = document.querySelector('.popup__edit-avatar');
+

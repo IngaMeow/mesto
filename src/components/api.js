@@ -62,8 +62,8 @@ export class Api {
   }
 
 
-  deleteCard = (id) => {
-    return fetch('https://mesto.nomoreparties.co/v1/cohort-59/cards/cardId ' + id, {
+  deleteCard = (cardID) => {
+    return fetch(`${this._url}/cards/${cardID}`, {
       method: 'DELETE',
       headers: this._headers,
     })

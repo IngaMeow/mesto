@@ -50,5 +50,6 @@
 
 @import url(../blocks/error/error.css);
 @import url(../blocks/error/_active/error_active.css);
+@import url(../blocks/error/_edit-profile/error_edit-profile.css);
 
 @import url(../blocks/form/__input/form__input.css);

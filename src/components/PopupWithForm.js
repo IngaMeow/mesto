@@ -17,11 +17,6 @@ export default class PopupWithForm extends Popup {
     return this._formValues;
   };
 
-  // Ожидание загрузки на кнопке
-
-  setButtonText = (text) => {
-    this._button.textContent = text;
-  }
 
   setEventListeners () {
     super.setEventListeners();
@@ -36,6 +31,12 @@ export default class PopupWithForm extends Popup {
     super.close();
     this._formElement.reset();
   };
+
+  // Ожидание загрузки на кнопке
+
+  setButtonText = (text) => {
+    this._button.textContent = text;
+  }
 
   load(loading) {
     if(loading) {
