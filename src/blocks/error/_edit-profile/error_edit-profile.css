@@ -1,9 +1,9 @@
-.error__edit-profile {
+.error_edit-profile {
   margin-left: 35px;
 }
 
 @media screen and (max-width: 890px) {
-  .error__edit-profile {
+  .error_edit-profile {
     margin-left: 25px;
   }
 }
