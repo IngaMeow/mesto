@@ -42,5 +42,6 @@
 .popup__user-title{margin-bottom:54px;margin-left:36px;margin-top:34px}@media screen and (max-width:890px){.popup__user-title{margin-left:20px}}
 .error{box-sizing:border-box;color:red;display:block;font-size:12px;font-weight:400;height:25px;line-height:14.52px;margin-bottom:10px;margin-top:5px;max-width:358px;visibility:hidden}@media screen and (max-width:890px){.error{width:238px}}
 .error_active{visibility:visible}
+.error__edit-profile{margin-left:35px}@media screen and (max-width:890px){.error__edit-profile{margin-left:25px}}
 .form__input{align-self:center;background-color:transparent;border:none;border-bottom:1px solid rgba(0,0,0,.2);box-sizing:border-box;font-size:14px;font-weight:400;height:27px;line-height:16.94px;outline:none;padding-bottom:13px;width:358px}.form__input_type_error{border-bottom:1px solid red}@media screen and (max-width:890px){.form__input{width:238px}}
 
