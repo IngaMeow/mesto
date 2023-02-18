@@ -109,6 +109,7 @@ const popupEditAvatar = new PopupWithForm('.popup_type_edit-avatar', {
 });
 popupEditAvatar.setEventListeners();
 
+
 editAvatarButton.addEventListener('click', () => {
   popupEditAvatar.open();
 });

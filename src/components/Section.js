@@ -14,5 +14,6 @@ export default class Section {
 
 renderItems = (items) => {
   items.reverse().forEach(item => this._renderer(item)); 
+  console.log(items)
 }
 }

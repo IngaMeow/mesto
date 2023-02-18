@@ -37,6 +37,7 @@ export default class PopupWithForm extends Popup {
   setButtonText = (text) => {
     this._button.textContent = text;
   }
+  
 
   load(loading) {
     if(loading) {
@@ -45,5 +46,6 @@ export default class PopupWithForm extends Popup {
       this._button.textContent = 'Сохранить'
     }
   }
+
 }
 

@@ -44,8 +44,7 @@ export class Api {
       headers: this._headers,
     })
     .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
-    .then(res => (console.log('res =>', res), res))
-    .catch(err => console.log(err));
+    .catch(() => {console.log})
   }
 
   addNewCard = (data) => {
