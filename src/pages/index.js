@@ -5,15 +5,15 @@ import Section from "../components/Section.js";
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-import { Api } from "../components/api";
+import { Api } from "../components/Api";
 import { PopupWithConfirmation } from "../components/PopupWithConfirmation";
 import '../pages/index.css';
 
 
-//Подключение APi
+// Подключение APi
 
 const api = new Api({
-  url: 'https://mesto.nomoreparties.co/v1/cohort-59',
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-59',
   headers: {
     authorization: 'c46d3721-4c82-475a-8797-44a490894204',
     'Content-Type': 'application/json'
@@ -76,6 +76,10 @@ const popupEditProfile = new PopupWithForm(
     api.editUserInfo(userData)
       .then((userData) => {
         userInfo.setUserInfo(userData);
+        popupEditProfile.close();
+    })
+      .catch((err) => {
+        console.log(err);
     })
       .finally(() => {
         popupEditProfile.load(false)
@@ -100,8 +104,10 @@ const popupEditAvatar = new PopupWithForm('.popup_type_edit-avatar', {
       .then((userData) => {
         userInfo.setUserInfo(userData);
         popupEditAvatar.close();
-        console.log(userInfo.setUserInfo(userData))
     })
+      .catch((err) => {
+        console.log(err);
+      })
       .finally(() => {
         popupEditAvatar.load(false)
     })
@@ -112,6 +118,7 @@ popupEditAvatar.setEventListeners();
 
 editAvatarButton.addEventListener('click', () => {
   popupEditAvatar.open();
+  formValidEditAvatar.resetValidation();
 });
 
 
@@ -130,13 +137,19 @@ const createCard = (data) => {
     api.addCardLike(id)
       .then((data) => {
         card.updateLikesCounter(data)
-      });
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   };
 
   const handleDislike = (id) => {
     api.deleteCardLike(id)
       .then((data) => {
         card.updateLikesCounter(data);
+      })
+      .catch((err) => {
+        console.log(err);
       })
   }
 
@@ -147,6 +160,9 @@ const createCard = (data) => {
         .then(() => {
           card.handleDelete();
           popupConfirmDelete.close();
+        })
+        .catch((err) => {
+          console.log(err);
         })
     })
   }
@@ -177,6 +193,9 @@ const popupAddCard = new PopupWithForm (
       cardList.addItem(newCard);
       popupAddCard.close();
     })
+      .catch((err) => {
+        console.log(err);
+      })
       .finally(() => {
       popupAddCard.load(false);
     });
